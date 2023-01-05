@@ -10,6 +10,8 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 ### A) Create The VPC Network
 - Name: `SheyTechno-VPC`
 - CidirBlock: `10.0.0.0/16`
+## VPC Created
+![3-VPC-created](https://user-images.githubusercontent.com/96470430/210854212-5f3ff882-a648-4f4f-a8d9-a6f615044e9c.PNG)
 
 ### B) Create The NAT/AL Subnet 1 and 2
 1. NAT/ALB Subnet 1
@@ -49,11 +51,15 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 - Name: `SheyTechno-db-Subnet-1`
 - CidirBlock: `10.0.35.0`
 - Availability Zone: `us-west-1a`
+![5-SubnetsCreated](https://user-images.githubusercontent.com/96470430/210854709-3c8c5750-0778-4126-8caf-21cdac44699a.PNG)
 
 2. Database Subnet 2
 - Name: `SheyTechno-db-Subnet-2`
 - CidirBlock: `10.0.40.0`
 - Availability Zone: `us-west-1c`
+
+## Database Subnet
+![4-a-DataSubenet](https://user-images.githubusercontent.com/96470430/210854403-ca15992f-d9cd-4b17-aa81-52b41bcdb192.PNG)
 
 ## STEP 2: Create 4 Public Route Rable and 4 Private Route Tables (Because of NAT Redundancy Implementation)
 - See AWS Doc: https://www.shorturl.at/HSU18
@@ -100,31 +106,40 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 7. Associate `SheyTechno-Database-RT-1` with `SheyTechno-db-Subnet-1` 
 8. Associate `SheyTechno-Database-RT-2` with `SheyTechno-db-Subnet-2`
 
+## Route Tables Created and Associated with respective Subnets
+![6-ToutTables-Created](https://user-images.githubusercontent.com/96470430/210853676-50b6716b-fc3c-45f9-b493-d0b0eb40d4b3.PNG)
+
 ## STEP 4: Create and Configure IGW and NAT Gateways 
 ### A) Create and Configure IGW to Expose The `NAT/ALB Subnet 1` and `NAT/ALB Subnet 2`
 1. Create the Internet Gatway
 - Name: `SheyTechno-VPC-IGW`
 - VPC: Select the `SheyTechno-VPC` Network
 
+![7-IGW](https://user-images.githubusercontent.com/96470430/210856086-b16db677-b32d-480e-aa79-c72593099a4f.PNG)
+
 2. Configure/Edit the `SheyTechno-NAT-ALB-Public-RT-1` Route Table 
 - Destination: `0.0.0.0/0`
 - Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
+![8-PublicRT-IGW](https://user-images.githubusercontent.com/96470430/210857179-df8c7eea-7d49-4eb6-a974-78c787840bee.PNG)
 
 3. Configure/Edit the `SheyTechno-NAT-ALB-Public-RT-2` Route Table 
 - Destination: `0.0.0.0/0`
 - Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
+![9-PubRT2-IGW](https://user-images.githubusercontent.com/96470430/210857505-b5ffdbd0-d11b-4e1c-8f3e-c636fe6ce11d.PNG)
 
 4. Configure/Edit the `SheyTechno-Webserver-RT-1` Route Table 
 - Destination: `0.0.0.0/0`
 - Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
+![10-Web1-IGW](https://user-images.githubusercontent.com/96470430/210858177-f4955581-c03b-4e46-93e3-8c2ede7bd215.PNG)
 
 5. Configure/Edit the `SheyTechno-Webserver-RT-2` Route Table 
 - Destination: `0.0.0.0/0`
 - Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
+![11-Web2-IGW](https://user-images.githubusercontent.com/96470430/210858530-be5c2072-0ec0-40dc-b110-3ff17e743384.PNG)
 
 ### B) Create and Configure The NAT Gateways to point at the Web, App and Database Tiers/Subnets
 1. Create the `First NAT Gateway`
@@ -170,6 +185,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
     - Inbound: 
         - Ports: `22`
         - Source: Provide `Your IP or 0.0.0.0/0`
+![12a-Bastion-SG](https://user-images.githubusercontent.com/96470430/210874256-e8f8f1f9-bc5f-42e8-a671-2613e973c7f6.PNG)
 
 ### Create the Frontend/External Load Balancer Security Group
 - Navigate to `Security groups`
@@ -180,6 +196,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
         - Source: `0.0.0.0/0`
 
     - Click `Create Security Group`
+![12-Frontend-SG](https://user-images.githubusercontent.com/96470430/210869804-a9455ccc-1e3b-4843-92c4-f30918b1865c.PNG)
 
 ### Create the Webservers Security Group
 - Click on Create Security group
@@ -189,6 +206,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
             - Source: Provide the `Frontend-LB-Security-Group` ID
         - Ports: `22`
             - Source: `Bastion-Host-Security-Group` ID
+![13-Webserve-SG](https://user-images.githubusercontent.com/96470430/210875266-29cd6193-cced-4ed9-ac3a-26391a140d6d.PNG)
 
 ### Create the Backend Load Balancer Security Group
 - Click on Create Security group
@@ -196,6 +214,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
     - Inbound: 
         - Ports: `80 and 443`
         - Source: Provide the `Webservers-Security-Group` ID
+![14-Backend-SG](https://user-images.githubusercontent.com/96470430/210876445-23ad297c-c82f-4454-a87b-9ce094323fcc.PNG)
 
 ### Create the Appservers Security Group
 - Click on Create Security group
@@ -205,6 +224,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
             - Source: Provide the `Backend-LB-Security-Group` ID
         - Ports: `22`
             - Source: `Bastion-Host-Security-Group` ID
+![15-AppServer-SG](https://user-images.githubusercontent.com/96470430/210877486-5ede7165-0b9d-4309-9d67-b0fa31f881f7.PNG)
 
 ### Create the Database Security Group
 - Click on Create Security group
@@ -214,6 +234,10 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
             - Source: Provide the `Appservers-Security-Group` ID
         - Ports: `3306`
             - Source: `Bastion-Host-Security-Group` ID
+![17-Databse-SG](https://user-images.githubusercontent.com/96470430/210878560-14a0f24f-45f8-40a3-9005-eaf8e3259774.PNG)
+
+## List of Security Groups Created
+![17-List-of-SG](https://user-images.githubusercontent.com/96470430/210883589-95b37b7c-9751-4f86-83cf-694080974405.PNG)
 
 ## STEP 6: Create Frontend and Backend Load Balancers
 ### Create Frontend Load Balancer
