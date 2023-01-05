@@ -8,50 +8,50 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 
 ## STEP 1: Create The Base Networking Infrastructure For NAT/ELB, Webservers, Appservers and Database
 ### A) Create The VPC Network
-- Name: `Prod-VPC`
+- Name: `SheyTechno-VPC`
 - CidirBlock: `10.0.0.0/16`
 
 ### B) Create The NAT/AL Subnet 1 and 2
 1. NAT/ALB Subnet 1
-- Name: `Prod-NAT-ALB-Subnet-1`
+- Name: `SheyTechno-NAT-ALB-Subnet-1`
 - CidirBlock: `10.0.5.0`
 - Availability Zone: `us-west-1a`
 
 2. NAT/ALB Subnet 2
-- Name: `Prod-NAT-ALB-Subnet-2`
+- Name: `SheyTechno-NAT-ALB-Subnet-2`
 - CidirBlock: `10.0.10.0`
 - Availability Zone: `us-west-1c`
 
 ### B) Create The Webserver Subnet 1 and 2
 1. Webserver Subnet 1
-- Name: `Prod-Webserver-Subnet-1`
+- Name: `SheyTechno-Webserver-Subnet-1`
 - CidirBlock: `10.0.15.0`
 - Availability Zone: `us-west-1a`
 
 2. Webserver Subnet 2
-- Name: `Prod-Webserver-Subnet-2`
+- Name: `SheyTechno-Webserver-Subnet-2`
 - CidirBlock: `10.0.20.0`
 - Availability Zone: `us-west-1c`
 
 ### C) Create The Appserver Subnet 1 and 2
 1. Appserver Subnet 1
-- Name: `Prod-Appserver-Subnet-1`
+- Name: `SheyTechno-Appserver-Subnet-1`
 - CidirBlock: `10.0.25.0`
 - Availability Zone: `us-west-1a`
 
 2. Appserver Subnet 2
-- Name: `Prod-Appserver-Subnet-2`
+- Name: `SheyTechno-Appserver-Subnet-2`
 - CidirBlock: `10.0.30.0`
 - Availability Zone: `us-west-1c`
 
 ### D) Create The Database Subnet 1 and 2
 1. Database Subnet 1
-- Name: `Prod-db-Subnet-1`
+- Name: `SheyTechno-db-Subnet-1`
 - CidirBlock: `10.0.35.0`
 - Availability Zone: `us-west-1a`
 
 2. Database Subnet 2
-- Name: `Prod-db-Subnet-2`
+- Name: `SheyTechno-db-Subnet-2`
 - CidirBlock: `10.0.40.0`
 - Availability Zone: `us-west-1c`
 
@@ -59,81 +59,81 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 - See AWS Doc: https://www.shorturl.at/HSU18
 
 ### A) NAT/ALB Public Subnet 1 Route Table
-- Name: `Prod-NAT-ALB-Public-RT-1`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-NAT-ALB-Public-RT-1`
+- VPC: Select the `SheyTechno-VPC`
 
 ### B) NAT/ALB Public Subnet 2 Route Table
-- Name: `Prod-NAT-ALB-Public-RT-2`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-NAT-ALB-Public-RT-2`
+- VPC: Select the `SheyTechno-VPC`
 
 ### C) Webserver Subnet 1 Route Table
-- Name: `Prod-Webserver-RT-1`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-Webserver-RT-1`
+- VPC: Select the `SheyTechno-VPC`
 
 ### D) Webserver Subnet 2 Route Table
-- Name: `Prod-Webserver-RT-2`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-Webserver-RT-2`
+- VPC: Select the `SheyTechno-VPC`
 
 ### E) Appserver Subnet 1 Table Table
-- Name: `Prod-Appserver-RT-1`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-Appserver-RT-1`
+- VPC: Select the `SheyTechno-VPC`
 
 ### F) Appserver Subnet 2 Table Table
-- Name: `Prod-Appserver-RT-2`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-Appserver-RT-2`
+- VPC: Select the `SheyTechno-VPC`
 
 ### G) Database Subnet 1 Route Table
-- Name: `Prod-Database-RT-1`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-Database-RT-1`
+- VPC: Select the `SheyTechno-VPC`
 
 ### H) Database Subnet 2 Route Table
-- Name: `Prod-Database-RT-2`
-- VPC: Select the `Prod-VPC`
+- Name: `SheyTechno-Database-RT-2`
+- VPC: Select the `SheyTechno-VPC`
 
 ## STEP 3: Associate All Above Route Tables With Their Respective Subnets
-1. Associate `Prod-NAT-ALB-Public-RT-1` with `Prod-NAT-ALB-Subnet-1` 
-2. Associate `Prod-NAT-ALB-Public-RT-2` with `Prod-NAT-ALB-Subnet-2`
-3. Associate `Prod-Webserver-RT-1` with `Prod-Webserver-Subnet-1` 
-4. Associate `Prod-Webserver-RT-2` with `Prod-Webserver-Subnet-2`
-5. Associate `Prod-Appserver-RT-1` with `Prod-Appserver-Subnet-1` 
-6. Associate `Prod-Appserver-RT-2` with  `Prod-Appserver-Subnet-2`
-7. Associate `Prod-Database-RT-1` with `Prod-db-Subnet-1` 
-8. Associate `Prod-Database-RT-2` with `Prod-db-Subnet-2`
+1. Associate `SheyTechno-NAT-ALB-Public-RT-1` with `SheyTechno-NAT-ALB-Subnet-1` 
+2. Associate `SheyTechno-NAT-ALB-Public-RT-2` with `SheyTechno-NAT-ALB-Subnet-2`
+3. Associate `SheyTechno-Webserver-RT-1` with `SheyTechno-Webserver-Subnet-1` 
+4. Associate `SheyTechno-Webserver-RT-2` with `SheyTechno-Webserver-Subnet-2`
+5. Associate `SheyTechno-Appserver-RT-1` with `SheyTechno-Appserver-Subnet-1` 
+6. Associate `SheyTechno-Appserver-RT-2` with  `SheyTechno-Appserver-Subnet-2`
+7. Associate `SheyTechno-Database-RT-1` with `SheyTechno-db-Subnet-1` 
+8. Associate `SheyTechno-Database-RT-2` with `SheyTechno-db-Subnet-2`
 
 ## STEP 4: Create and Configure IGW and NAT Gateways 
 ### A) Create and Configure IGW to Expose The `NAT/ALB Subnet 1` and `NAT/ALB Subnet 2`
 1. Create the Internet Gatway
-- Name: `Prod-VPC-IGW`
-- VPC: Select the `Prod-VPC` Network
+- Name: `SheyTechno-VPC-IGW`
+- VPC: Select the `SheyTechno-VPC` Network
 
-2. Configure/Edit the `Prod-NAT-ALB-Public-RT-1` Route Table 
+2. Configure/Edit the `SheyTechno-NAT-ALB-Public-RT-1` Route Table 
 - Destination: `0.0.0.0/0`
-- Target: Select the `Prod-VPC-IGW`
+- Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
 
-3. Configure/Edit the `Prod-NAT-ALB-Public-RT-2` Route Table 
+3. Configure/Edit the `SheyTechno-NAT-ALB-Public-RT-2` Route Table 
 - Destination: `0.0.0.0/0`
-- Target: Select the `Prod-VPC-IGW`
+- Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
 
-4. Configure/Edit the `Prod-Webserver-RT-1` Route Table 
+4. Configure/Edit the `SheyTechno-Webserver-RT-1` Route Table 
 - Destination: `0.0.0.0/0`
-- Target: Select the `Prod-VPC-IGW`
+- Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
 
-5. Configure/Edit the `Prod-Webserver-RT-2` Route Table 
+5. Configure/Edit the `SheyTechno-Webserver-RT-2` Route Table 
 - Destination: `0.0.0.0/0`
-- Target: Select the `Prod-VPC-IGW`
+- Target: Select the `SheyTechno-VPC-IGW`
 - `SAVE`
 
 ### B) Create and Configure The NAT Gateways to point at the Web, App and Database Tiers/Subnets
 1. Create the `First NAT Gateway`
-- Name: `Prod-NAT-Gateway-1`
+- Name: `SheyTechno-NAT-Gateway-1`
 - Elastic IP: Clcik `Allocate Elastic IP`
 - Click `Create NAT gateway`
 
 2. Create the `Second NAT Gateway`
-- Name: `Prod-NAT-Gateway-2`
+- Name: `SheyTechno-NAT-Gateway-2`
 - Elastic IP: Clcik `Allocate Elastic IP`
 - Click `Create NAT gateway`
 
@@ -141,27 +141,27 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 
 ### C.1) Update the `Appserver subnet` Route tables (2) with the following configs
 
-1. Select the `Prod-Appserver-RT-1`
+1. Select the `SheyTechno-Appserver-RT-1`
 - Click on Edit and `Add route`
 - Destination: `0.0.0.0/0`
-- Target: Select `Prod-NAT-Gateway-1`
+- Target: Select `SheyTechno-NAT-Gateway-1`
 
-2. Select the `Prod-Appserver-RT-2`
+2. Select the `SheyTechno-Appserver-RT-2`
 - Click on Edit and `Add route`
 - Destination: `0.0.0.0/0`
-- Target: Select `Prod-NAT-Gateway-2`
+- Target: Select `SheyTechno-NAT-Gateway-2`
 
 ### C.2) Update the `Database subnet` Route tables (2) with the following configs
 
-1. Select the `Prod-Database-RT-1`
+1. Select the `SheyTechno-Database-RT-1`
 - Click on Edit and `Add route`
 - Destination: `0.0.0.0/0`
-- Target: Select `Prod-NAT-Gateway-1`
+- Target: Select `SheyTechno-NAT-Gateway-1`
 
-2. Select the `Prod-Database-RT-2`
+2. Select the `SheyTechno-Database-RT-2`
 - Click on Edit and `Add route`
 - Destination: `0.0.0.0/0`
-- Target: Select `Prod-NAT-Gateway-2`
+- Target: Select `SheyTechno-NAT-Gateway-2`
 
 ## STEP 5: Create Security Groups
 ### Create the Bastion Host Security Group
@@ -219,19 +219,19 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 ### Create Frontend Load Balancer
 - Navigate to `EC2/Load Balancers` and Click on `Create Load Balancer`
     - Type: Choose `Application Load Balancer`
-    - Load balancer name: `Prod-Frontend-LB`
+    - Load balancer name: `SheyTechno-Frontend-LB`
     - Scheme: `Internet-facing`
     -  IP address type: `IPv4`
     - Network mapping:
-        - VPC: Select `Prod-VPC`
-        - Mappings: Select the `Prod-NAT-ALB-Subnet-1` and `Prod-NAT-ALB-Subnet-2` frontend subnets
+        - VPC: Select `SheyTechno-VPC`
+        - Mappings: Select the `SheyTechno-NAT-ALB-Subnet-1` and `SheyTechno-NAT-ALB-Subnet-2` frontend subnets
     - Security groups: Select the `Frontend-LB-Security-Group`
     - Listeners and routing: 
         - Click on `Create a target group` to create `HTTP` target group
             - target type: select `instances`
             - Target group name: `Frontend-LB-HTTP-TG`
             - Protocol and Port: `HTTP`:`80`
-            - VPC: Select `Prod-VPC`
+            - VPC: Select `SheyTechno-VPC`
             - Protocol version: `HTTP1`
             - Health checks: `HTTP`
             - Health check path: `/VenturaMailingApp.php`
@@ -249,19 +249,19 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 ### Create Backend Load Balancer
 - Navigate to `EC2/Load Balancers` and Click on `Create Load Balancer`
     - Type: Choose `Application Load Balancer`
-    - Load balancer name: `Prod-Backend-LB`
+    - Load balancer name: `SheyTechno-Backend-LB`
     - Scheme: `Internet-facing`
     -  IP address type: `IPv4`
     - Network mapping:
-        - VPC: Select `Prod-VPC`
-        - Mappings: Select the `Prod-Webserver-Subnet-1` and `Prod-Webserver-Subnet-2` Webserver/Provate subnets
+        - VPC: Select `SheyTechno-VPC`
+        - Mappings: Select the `SheyTechno-Webserver-Subnet-1` and `SheyTechno-Webserver-Subnet-2` Webserver/Provate subnets
     - Security groups: Select the `Backend-LB-Security-Group`
     - Listeners and routing: 
         - Click on `Create a target group` to create `HTTP` target group
             - target type: select `instances`
             - Target group name: `Backend-LB-HTTP-TG`
             - Protocol and Port: `HTTP`:`80`
-            - VPC: Select `Prod-VPC`
+            - VPC: Select `SheyTechno-VPC`
             - Protocol version: `HTTP1`
             - Health checks: `HTTP`
             - Health check path: `/VenturaMailingApp.php`
@@ -279,7 +279,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 ## STEP 7: Create an S3 Bucket Environment To Upload The Automation and Database Configs
 - Navigate to `Amazon S3`
 - Click on `Create Bucket`
-    - Name: Use naming convention `prod-proxy-app-db-config-YOUR-LAST-NAME-and-DAY-OF-BIRTH`
+    - Name: Use naming convention `SheyTechno-proxy-app-db-config-YOUR-LAST-NAME-and-DAY-OF-BIRTH`
     - AWS Region: Select your project region `(California) us-west-1`
     - Object Ownership: `ACLs disabled`
     - Block Public Access settings for this bucket: `Enable` `Block all public access`
@@ -290,14 +290,14 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 ## STEP 8: Create a Bastion Host VM For Remote Access ((SSH)) To Webservers, Appservers and MySQL Database
 - Navigate to Instance in EC2
 - Click on `Create Instance`
-    - Name: `Prod-Bastion-Host`
+    - Name: `SheyTechno-Bastion-Host`
     - AMI: `Ubuntu 18.04`
     - Instance type: `t2.micro`
     - Key pair name: Select/Create Key pair
-        - Name: `Prod-"YOUR_REGION"-Key`
+        - Name: `SheyTechno-"YOUR_REGION"-Key`
     - Network:
-        - VPC: `Prod-VPC`
-        - Subnet: Select either `Prod-NAT-ALB-Subnet-1` or `Prod-NAT-ALB-Subnet-2`
+        - VPC: `SheyTechno-VPC`
+        - Subnet: Select either `SheyTechno-NAT-ALB-Subnet-1` or `SheyTechno-NAT-ALB-Subnet-2`
         - Security Group: Select the `Bastion-Host-Security-Group`
     - Click `LAUNCH INSTANCE`
 
@@ -340,8 +340,8 @@ Now run the above command to check added identities or Private keys
 - Naviagte to EC2/Launch Configuration
     - Click on `Create Launch Configuration`
     - Switch by Clicking on `Create launch template`
-        - Name: `Prod-Webservers-LT`
-        - Template version description: `Prod-Webservers-LT Version 1`
+        - Name: `SheyTechno-Webservers-LT`
+        - Template version description: `SheyTechno-Webservers-LT Version 1`
         - AMI: Select for `Ubuntu 18.04`
         - Instance type: `t2.micro`
         - Key pair: Create a new key pair `california-keypair`
@@ -361,8 +361,8 @@ Now run the above command to check added identities or Private keys
 - Naviagte to EC2/Launch Configuration
     - Click on `Create Launch Configuration`
     - Switch by Clicking on `Create launch template`
-        - Name: `Prod-Appservers-LT`
-        - Template version description: `Prod-Appservers-LT Version 1`
+        - Name: `SheyTechno-Appservers-LT`
+        - Template version description: `SheyTechno-Appservers-LT Version 1`
         - AMI: Select for `Amazon Linux 2`
         - Instance type: `t2.micro`
         - Key pair: Create a new key pair `california-keypair`
@@ -382,11 +382,11 @@ Now run the above command to check added identities or Private keys
 ### A). Webserver Autocsaling Group
 - Navigate to `EC2/Auto Scaling`
     - Click on `Create Auto Scaling Group`
-        - Auto Scaling group name: `prod-webservers-autoscaling-group`
-        - Launch template: Select the `Prod-Webservers-LT`
+        - Auto Scaling group name: `SheyTechno-webservers-autoscaling-group`
+        - Launch template: Select the `SheyTechno-Webservers-LT`
         - Click on `NEXT`
-        - VPC: Select `Prod-VPC`
-        - Availability Zones and subnets: Select `Prod-Webserver-Subnet-1` and `Prod-Webserver-Subnet-2`
+        - VPC: Select `SheyTechno-VPC`
+        - Availability Zones and subnets: Select `SheyTechno-Webserver-Subnet-1` and `SheyTechno-Webserver-Subnet-2`
         - Click `NEXT`
         - Load balancing: Select "Attach to an existing load balancer", select `Frontend-LB-HTTP-TG`
             - Select `Choose from your load balancer target groups`
@@ -403,7 +403,7 @@ Now run the above command to check added identities or Private keys
         - Scaling policies: 
             - NOTE: Also Known as Dynamic Scaling. This defines the `Scale Out Policy/Action`
             - Select `Target tracking scaling policy`
-                - Scaling policy name: `prod-asg-scale-out-policy`
+                - Scaling policy name: `SheyTechno-asg-scale-out-policy`
                 - Metric type: Select `Average VPU Utilization`
                 - Target value: `80%`
             - Click on `NEXT`
@@ -414,11 +414,11 @@ Now run the above command to check added identities or Private keys
 ### B). Appserver Autocsaling Group
 - Navigate to `EC2/Auto Scaling`
     - Click on `Create Auto Scaling Group`
-        - Auto Scaling group name: `prod-appservers-autoscaling-group`
-        - Launch template: Select the `Prod-Appserver-LT`
+        - Auto Scaling group name: `SheyTechno-appservers-autoscaling-group`
+        - Launch template: Select the `SheyTechno-Appserver-LT`
         - Click on `NEXT`
-        - VPC: Select `Prod-VPC`
-        - Availability Zones and subnets: Select `Prod-Appserver-Subnet-1` and `Prod-Appserver-Subnet-2`
+        - VPC: Select `SheyTechno-VPC`
+        - Availability Zones and subnets: Select `SheyTechno-Appserver-Subnet-1` and `SheyTechno-Appserver-Subnet-2`
         - Click `NEXT`
         - Load balancing: Select "Attach to an existing load balancer", select `Backend-LB-HTTP-TG`
             - Select `Choose from your load balancer target groups`
@@ -435,7 +435,7 @@ Now run the above command to check added identities or Private keys
         - Scaling policies: 
             - NOTE: Also Known as Dynamic Scaling. This defines the `Scale Out Policy/Action`
             - Select `Target tracking scaling policy`
-                - Scaling policy name: `prod-asg-scale-out-policy`
+                - Scaling policy name: `SheyTechno-asg-scale-out-policy`
                 - Metric type: Select `Average VPU Utilization`
                 - Target value: `80%`
             - Click on `NEXT`
@@ -448,10 +448,10 @@ Now run the above command to check added identities or Private keys
 - Navigate to the `RDS` Service
 - Click on `Subnet groups`
     - Click `Create DB Subnet Group`
-    - Name: `prod-db-subnet-group`
-    - VPC: Select `Prod-VPC`
+    - Name: `SheyTechno-db-subnet-group`
+    - VPC: Select `SheyTechno-VPC`
     - Availability Zones: Select the two zones you used for this project. Example `us-west-1a` and `us-west-1c`
-    - Subnets: Select `Prod-db-Subnet-1` and `Prod-db-Subnet-2`
+    - Subnets: Select `SheyTechno-db-Subnet-1` and `SheyTechno-db-Subnet-2`
     - Click on `CREATE`
 
 ### B) Create a Database Instance
@@ -460,11 +460,11 @@ Now run the above command to check added identities or Private keys
     - Choose a database creation method: Select `Standard create`
     - Engine type: `MySQL`
     - Engine Version: Select the `latest`
-    - Templates: `Production`
+    - Templates: `SheyTechnouction`
     - Deployment options: `Multi-AZ DB instance`
 
     - Databse Settings:
-        - DB instance identifier: `prod-database`
+        - DB instance identifier: `SheyTechno-database`
         - Master username: `admin`
         - Master password: For example `admin2022`
         - NOTE: Password must be at least 8 characters, Can't contain / , ', " and @
@@ -479,8 +479,8 @@ Now run the above command to check added identities or Private keys
     
     - Connectivity:
         - Compute resource: Select `Don’t connect to an EC2 compute resource`
-        - Virtual private cloud (VPC): `Prod-VPC`
-        - DB Subnet group: Select your DB Subnet group `prod-db-subnet-group`
+        - Virtual private cloud (VPC): `SheyTechno-VPC`
+        - DB Subnet group: Select your DB Subnet group `SheyTechno-db-subnet-group`
         - Public access: `NO`
             - NOTE: To remote Programatically manually, we'll have to setup a `bastion host`
         - Database authentication: Select `Password authentication`
@@ -488,7 +488,7 @@ Now run the above command to check added identities or Private keys
         - Enhanced Monitoring: `Disable`
 
     - Additional configuration: 
-        - Initial database name: `proddatabase`
+        - Initial database name: `SheyTechnodatabase`
         - Backup: `Enable automated backups`
         - Encryption: `Enable encryption`
         - Maintenance: `Disable`
