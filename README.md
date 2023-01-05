@@ -1,4 +1,4 @@
-# 👨🏼‍💻 Deploying a 4 Tier Mailing Web Application on AWS 👨🏼‍💻
+# 🏼‍💻 Deploying a 4 Tier Mailing Web Application on AWS
 
 ## 
 In this project, there will be implementation of the PHP Mailing deployment with multi-tier architecture on AWS.
