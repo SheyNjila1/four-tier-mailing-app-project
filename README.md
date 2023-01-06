@@ -269,6 +269,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
         - Select the `Frontend-LB-HTTP-TG`
     
     - Click on `Create load balancer`
+![18-Frontend-LB](https://user-images.githubusercontent.com/96470430/211010149-5f58561f-22dd-42b5-a9c8-e7144e5f5b1b.PNG)
 
 ### Create Backend Load Balancer
 - Navigate to `EC2/Load Balancers` and Click on `Create Load Balancer`
@@ -299,6 +300,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
         - Select the `Backend-LB-HTTP-TG`
     
     - Click on `Create load balancer`
+![19-Frontend-LB](https://user-images.githubusercontent.com/96470430/211010415-00c0adce-317b-4b61-a3e4-24c4586dd94b.PNG)
 
 ## STEP 7: Create an S3 Bucket Environment To Upload The Automation and Database Configs
 - Navigate to `Amazon S3`
@@ -310,6 +312,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
     - Bucket Versioning: `Enable`
     - Default encryption: `Enable`
     - Click `CREATE BUCKET`
+![20-bucket](https://user-images.githubusercontent.com/96470430/211012108-31155859-53c0-4602-937e-d7a38afb709c.PNG)
 
 ## STEP 8: Create a Bastion Host VM For Remote Access ((SSH)) To Webservers, Appservers and MySQL Database
 - Navigate to Instance in EC2
@@ -324,6 +327,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
         - Subnet: Select either `SheyTechno-NAT-ALB-Subnet-1` or `SheyTechno-NAT-ALB-Subnet-2`
         - Security Group: Select the `Bastion-Host-Security-Group`
     - Click `LAUNCH INSTANCE`
+![21-Bastion-host](https://user-images.githubusercontent.com/96470430/211014546-cb04511c-79a5-4dcc-80ae-65ba7a8ea458.PNG)
 
 ### Setup SSH Port Forwarding Between Your Local and Bastion Host To Point at The Web, App and DB Instance.
 ```exec ssh-agent bash``` 
@@ -331,6 +335,7 @@ We'll also see how to connect the Webserver to the Appservers and the Appservers
 ```eval 'ssh-agent -s'```
 
 ```ssh-agent bash```
+![22-ssh-Ubuntu](https://user-images.githubusercontent.com/96470430/211017577-ec47ec04-2452-496c-9593-2023ebde5810.PNG)
 
 #### ssh-add -L    
 - (Once you run this command it will tell you if you have added some identities to SSH agen or not. If not run the bellow command to add identity or private key) 
@@ -358,6 +363,7 @@ Now run the above command to check added identities or Private keys
     - Click on `Next` 
     - Name: `EC2-AmazonS3ReadOnlyAccess`
     - Click `CREATE`
+![23-EC2-AmazonS3AccessOnlyRole](https://user-images.githubusercontent.com/96470430/211018301-67c7117e-6761-4186-b57b-eb1a4be83401.PNG)
 
 ## STEP 9: Create Webservers and Apservers Launch Templates
 ### Create Webserver Launch Template
